@@ -1,3 +1,4 @@
+create schema `xuanke`;
 /*
 Navicat MySQL Data Transfer
 
