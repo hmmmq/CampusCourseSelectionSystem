@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Teacher</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<!--   获取教师个人信息,显示在开头-->
+<div class="container">
+	<h1>教师</h1>
+	<p>欢迎来到选课系统!</p>
+	<p>教师编号: <span th:text="${user.number}"></span></p>
+	<p>教师姓名: <span th:text="${user.name}"></span></p>
+</div>
+<!--   展示教师已经教的课程,并有“退出教学”的按钮(列表)-->
+<div class="container">
+	<h1>已教课程</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>课程编号</td>
+				<td>课程名称</td>
+				<td>课程时间</td>
+				<td>上课地点</td>
+				<td>教师编号</td>
+				<td>教师姓名</td>
+				<td>教师工号</td>
+				<td>退出教学</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="course : ${courses}">
+				<td th:text="${course.id}"></td>
+				<td th:text="${course.coursename}"></td>
+				<td th:text="${course.time}"></td>
+				<td th:text="${course.classroom}"></td>
+				<td th:text="${course.teacherid}"></td>
+				<td th:text="${course.teachername}"></td>
+				<td th:text="${course.teachernumber}"></td>
+
+
+				<td>
+					<form action="/delete" method="post">
+						<input type="hidden" name="id" th:value="${course.id}">
+						<input type="hidden" name="coursename" th:value="${course.coursename}">
+						<input type="hidden" name="time" th:value="${course.time}">
+						<input type="hidden" name="classroom" th:value="${course.classroom}">
+						<button type="submit" class="btn btn-danger">退出教学</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<!--   展示教师未教的课程,并有“教学”的按钮(列表)-->
+<div class="container">
+	<h1>未教课程</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>课程编号</td>
+				<td>课程名称</td>
+				<td>课程时间</td>
+				<td>上课地点</td>
+				<td>教学</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="course : ${nocourses}">
+				<td th:text="${course.id}"></td>
+				<td th:text="${course.coursename}"></td>
+				<td th:text="${course.time}"></td>
+				<td th:text="${course.classroom}"></td>
+				<td>
+					<form action="/add" method="post">
+						<input type="hidden" name="id" th:value="${course.id}">
+						<input type="hidden" name="coursename" th:value="${course.coursename}">
+						<input type="hidden" name="time" th:value="${course.time}">
+						<input type="hidden" name="classroom" th:value="${course.classroom}">
+						<input type="hidden" name="teacherid" th:value="${user.id}">
+						<input type="hidden" name="teachername" th:value="${user.name}">
+						<input type="hidden" name="teachernumber" th:value="${user.number}">
+						<button type="submit" class="btn btn-primary">教学</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>
+</body>
+</html>

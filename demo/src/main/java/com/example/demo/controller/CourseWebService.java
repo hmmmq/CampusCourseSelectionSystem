@@ -50,13 +50,13 @@ public class CourseWebService {
 
     //-----------------------------------teacher------------------------------------------------------------
 
-    @PostMapping("teacher/teach_course")
+    @PostMapping("/teacher/teach_course")
     Boolean teacher_teach_course(@RequestBody Course course, @RequestBody User user){
 
         return courseService.teacher_teach_course(course, user);
     }
 
-    @PostMapping("teacher/cancel_course")
+    @PostMapping("/teacher/cancel_course")
     Boolean teacher_cancel_course(@RequestBody Course course){
         return courseService.teacher_cancel_course(course);
 
@@ -67,19 +67,19 @@ public class CourseWebService {
 
 
     //-----------------------------------administrator------------------------------------------------------------
-    @PostMapping("administrator/add_course")
+    @PostMapping("/administrator/add_course")
     Boolean administrator_add_course(@RequestBody Course course){
          return courseService.administrator_add_course(course);
 
     }
 
-    @PostMapping("administrator/delete_course")
+    @PostMapping("/administrator/delete_course")
     Boolean administrator_delete_course(@RequestBody Course course){
         return courseService.administrator_delete_course(course);
 
     }
 
-    @PostMapping("administrator/update_course")
+    @PostMapping("/administrator/update_course")
     Boolean administrator_update_course(@RequestBody Course course){
         return courseService.administrator_update_course(course);
 
