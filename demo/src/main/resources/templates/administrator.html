@@ -16,23 +16,26 @@
 <!--录入课程信息表格,有“添加”的按钮-->
 <div class="container">
 	<h1>添加课程</h1>
-	<form action="/addcourse" method="post">
+	<form th:action="@{/administrator/add_course}" method="post">
 		<div class="form-group">
 			<label for="courseid">课程编号:</label>
-			<input type="text" class="form-control" id="courseid" name="courseid">
+			<input type="text" class="form-control" id="courseid" name="course.id">
 		</div>
 		<div class="form-group">
 			<label for="coursename">课程名称:</label>
-			<input type="text" class="form-control" id="coursename" name="coursename">
+			<input type="text" class="form-control" id="coursename" name="course.coursename">
 		</div>
 		<div class="form-group">
 			<label for="coursetime">课程时间:</label>
-			<input type="text" class="form-control" id="coursetime" name="coursetime">
+			<input type="text" class="form-control" id="coursetime" name="course.time">
 		</div>
 		<div class="form-group">
 			<label for="position">上课地点:</label>
-			<input type="text" class="form-control" id="position" name="position">
+			<input type="text" class="form-control" id="position" name="course.classroom">
 		</div>
+		<input type="hidden" name="user.id" th:value="${user.name}">
+		<input type="hidden" name="user.name" th:value="${user.number}">
+		<input type="hidden" name="user.number" th:value="${user.id}">
 		<button type="submit" class="btn btn-primary">添加</button>
 	</form>
 </div>
@@ -64,26 +67,32 @@
 				<td th:text="${course.teachername}"></td>
 				<td th:text="${course.teachernumber}"></td>
 				<td>
-					<form action="/deletecourse" method="post">
-						<input type="hidden" name="id" th:value="${course.id}">
-						<input type="hidden" name="coursename" th:value="${course.coursename}">
-						<input type="hidden" name="time" th:value="${course.time}">
-						<input type="hidden" name="classroom" th:value="${course.classroom}">
-						<input type="hidden" name="teacherid" th:value="${course.teacherid}">
-						<input type="hidden" name="teachername" th:value="${course.teachername}">
-						<input type="hidden" name="teachernumber" th:value="${course.teachernumber}">
+					<form th:action="@{/administrator/delete_course}" method="post">
+						<input type="hidden" name="course.id" th:value="${course.id}">
+						<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+						<input type="hidden" name="course.time" th:value="${course.time}">
+						<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+						<input type="hidden" name="course.teacherid" th:value="${course.teacherid}">
+						<input type="hidden" name="course.teachername" th:value="${course.teachername}">
+						<input type="hidden" name="course.teachernumber" th:value="${course.teachernumber}">
+						<input type="hidden" name="user.id" th:value="${user.name}">
+						<input type="hidden" name="user.name" th:value="${user.number}">
+						<input type="hidden" name="user.number" th:value="${user.id}">
 						<button type="submit" class="btn btn-danger">删除</button>
 					</form>
 				</td>
 				<td>
-					<form action="/updatecourse" method="post">
-						<input type="hidden" name="id" th:value="${course.id}">
-						<input type="hidden" name="coursename" th:value="${course.coursename}">
-						<input type="hidden" name="time" th:value="${course.time}">
-						<input type="hidden" name="classroom" th:value="${course.classroom}">
-						<input type="hidden" name="teacherid" th:value="${course.teacherid}">
-						<input type="hidden" name="teachername" th:value="${course.teachername}">
-						<input type="hidden" name="teachernumber" th:value="${course.teachernumber}">
+					<form th:action="@{/administrator/update_course}" method="post">
+						<input type="hidden" name="course.id" th:value="${course.id}">
+						<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+						<input type="hidden" name="course.time" th:value="${course.time}">
+						<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+						<input type="hidden" name="course.teacherid" th:value="${course.teacherid}">
+						<input type="hidden" name="course.teachername" th:value="${course.teachername}">
+						<input type="hidden" name="course.teachernumber" th:value="${course.teachernumber}">
+						<input type="hidden" name="user.id" th:value="${user.name}">
+						<input type="hidden" name="user.name" th:value="${user.number}">
+						<input type="hidden" name="user.number" th:value="${user.id}">
 						<button type="submit" class="btn btn-primary">修改</button>
 					</form>
 				</td>

@@ -14,40 +14,40 @@
 <!--login or register-->
 	<div class="container">
 		<h1>Login</h1>
-		<form action="/user/login" method="post">
+		<form th:action="@{/user/login}" method="post">
 			<div class="form-group">
 				<label for="number0">用户编号:</label>
-				<input type="text" class="form-control" id="number0" name="number">
+				<input type="text" class="form-control" id="number0" name="user.number">
 			</div>
 			<div class="form-group">
 				<label for="password0">密码:</label>
-				<input type="password" class="form-control" id="password0" name="password">
+				<input type="password" class="form-control" id="password0" name="user.password">
 			</div>
 			<button type="submit" class="btn btn-primary">Login</button>
 		</form>
 	</div>
 	<div class="container">
 		<h1>Register</h1>
-		<form action="/user/register_user" method="post">
+		<form th:action="@{/user/register_user}" method="post">
 			<div class="form-group">
 				<label for="number">用户编号:</label>
-				<input type="text" class="form-control" id="number" name="number">
+				<input type="text" class="form-control" id="number" name="user.number">
 			</div>
 			<div class="form-group">
 				<label for="username">姓名:</label>
-				<input type="text" class="form-control" id="username" name="name">
+				<input type="text" class="form-control" id="username" name="user.name">
 			</div>
 
 			<div class="form-group">
 				<label for="password">密码:</label>
-				<input type="password" class="form-control" id="password" name="password">
+				<input type="password" class="form-control" id="password" name="user.password">
 			</div>
 			<div class="form-group">
 				<label for="role">用户角色:</label>
 				<select class="form-control" id="role" name="role">
-					<option value="0">学生</option>
-					<option value="1">老师</option>
-					<option value="2">管理员</option>
+					<option name="user.type" value="0">学生</option>
+					<option name="user.type" value="1">老师</option>
+					<option name="user.type" value="2">管理员</option>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-primary">Register</button>
