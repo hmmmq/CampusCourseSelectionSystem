@@ -4,6 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +14,23 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("user.login")
+    @GetMapping("user/register")
+    public ModelAndView register(){
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("register");
+        return mv;
+
+    }
+    @PostMapping("user/register_user")
+    public ModelAndView register_user(User user){
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("index");
+        userService.register(user);
+        return mv;
+
+    }
+
+    @PostMapping("user/login")
     public ModelAndView login(User user){
         ModelAndView mv=new ModelAndView();
         boolean login = userService.login(user);
@@ -42,7 +59,7 @@ public class UserController {
 
     }
 
-    @RequestMapping("logout")
+    @RequestMapping("user/logout")
     public ModelAndView logOut(User user){
         ModelAndView mv=new ModelAndView();
         mv.setViewName("index");

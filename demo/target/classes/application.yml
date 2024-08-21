@@ -1,0 +1,16 @@
+server:
+  port: 8086
+spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot_hw
+    username: root
+    password: 123
+mybatis:
+  type-aliases-package: com.niit.pojo
+  mapper-locations: classpath:com/niit/mapper/*.xml
