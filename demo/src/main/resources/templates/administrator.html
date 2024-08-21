@@ -12,6 +12,10 @@
 	<p>欢迎来到选课系统!</p>
 	<p>管理员编号: <span th:text="${user.number}"></span></p>
 	<p>管理员姓名: <span th:text="${user.name}"></span></p>
+<!--	退出登录按钮 get 类型请求-->
+	<form th:action="@{/user/logout}" method="post">
+		<button type="submit" class="btn btn-danger">退出登录</button>
+	</form>
 </div>
 <!--录入课程信息表格,有“添加”的按钮-->
 <div class="container">

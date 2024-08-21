@@ -73,7 +73,7 @@ public class UserWebService {
         return mv;
     }
 
-    @RequestMapping("/user/logout")
+    @PostMapping("/user/logout")
     public ModelAndView logOut() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");

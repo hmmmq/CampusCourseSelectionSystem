@@ -12,6 +12,9 @@
 	<p>欢迎来到选课系统!</p>
 	<p>教师编号: <span th:text="${user.number}"></span></p>
 	<p>教师姓名: <span th:text="${user.name}"></span></p>
+	<form th:action="@{/user/logout}" method="post">
+		<button type="submit" class="btn btn-danger">退出登录</button>
+	</form>
 </div>
 <!--   展示教师已经教的课程,并有“退出教学”的按钮(列表)-->
 <div class="container">

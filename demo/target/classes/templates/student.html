@@ -12,6 +12,9 @@
 		<p>欢迎来到学生选课系统!</p>
 		<p>学生编号: <span th:text="${user.number}"></span></p>
 		<p>学生姓名: <span th:text="${user.name}"></span></p>
+		<form th:action="@{/user/logout}" method="post">
+			<button type="submit" class="btn btn-danger">退出登录</button>
+		</form>
 	</div>
 <!--   展示学生已经选的课程,并有“退课”的按钮(列表)-->
 	<div class="container">
