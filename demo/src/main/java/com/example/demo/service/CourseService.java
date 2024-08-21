@@ -66,4 +66,12 @@ public class CourseService {
         courseMapper.updateByPrimaryKey(course);
         return true;
     }
+
+    public List<Course> show_teacher_teached_course(User user) {
+        return courseMapper.selectByTeacherId(user);
+    }
+
+    public List<Course> show_teacher_unteached_course() {
+        return courseMapper.selectNullCourse();
+    }
 }

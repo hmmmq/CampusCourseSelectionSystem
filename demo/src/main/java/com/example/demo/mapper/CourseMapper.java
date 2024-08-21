@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.Course;
+import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,4 +16,8 @@ public interface CourseMapper {
     List<Course> selectAll();
 
     int updateByPrimaryKey(Course record);
+
+    List<Course> selectByTeacherId(User user);
+    //selectNullCourse
+    List<Course> selectNullCourse();
 }

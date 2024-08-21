@@ -6,25 +6,91 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Administrator</h1>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Name</th>
-					<th>Department</th>
-					<th>Salary</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="administrator : ${administrators}">
-					<td th:text="${administrator.id}"></td>
-					<td th:text="${administrator.name}"></td>
-					<td th:text="${administrator.department}"></td>
-					<td th:text="${administrator.salary}"></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<!--   获取管理员个人信息,显示在开头-->
+<div class="container">
+	<h1>管理员</h1>
+	<p>欢迎来到选课系统!</p>
+	<p>管理员编号: <span th:text="${user.number}"></span></p>
+	<p>管理员姓名: <span th:text="${user.name}"></span></p>
+</div>
+<!--录入课程信息表格,有“添加”的按钮-->
+<div class="container">
+	<h1>添加课程</h1>
+	<form action="/addcourse" method="post">
+		<div class="form-group">
+			<label for="courseid">课程编号:</label>
+			<input type="text" class="form-control" id="courseid" name="courseid">
+		</div>
+		<div class="form-group">
+			<label for="coursename">课程名称:</label>
+			<input type="text" class="form-control" id="coursename" name="coursename">
+		</div>
+		<div class="form-group">
+			<label for="coursetime">课程时间:</label>
+			<input type="text" class="form-control" id="coursetime" name="coursetime">
+		</div>
+		<div class="form-group">
+			<label for="position">上课地点:</label>
+			<input type="text" class="form-control" id="position" name="position">
+		</div>
+		<button type="submit" class="btn btn-primary">添加</button>
+	</form>
+</div>
+
+<!--展示所有课程信息,并且有“删除”和“修改”的按钮(列表)-->
+<div class="container">
+	<h1>管理所有课程</h1>
+<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>课程编号</td>
+				<td>课程名称</td>
+				<td>课程时间</td>
+				<td>上课地点</td>
+				<td>教师编号</td>
+				<td>教师姓名</td>
+				<td>教师工号</td>
+				<td>删除</td>
+				<td>修改</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="course : ${courses}">
+				<td th:text="${course.id}"></td>
+				<td th:text="${course.coursename}"></td>
+				<td th:text="${course.time}"></td>
+				<td th:text="${course.classroom}"></td>
+				<td th:text="${course.teacherid}"></td>
+				<td th:text="${course.teachername}"></td>
+				<td th:text="${course.teachernumber}"></td>
+				<td>
+					<form action="/deletecourse" method="post">
+						<input type="hidden" name="id" th:value="${course.id}">
+						<input type="hidden" name="coursename" th:value="${course.coursename}">
+						<input type="hidden" name="time" th:value="${course.time}">
+						<input type="hidden" name="classroom" th:value="${course.classroom}">
+						<input type="hidden" name="teacherid" th:value="${course.teacherid}">
+						<input type="hidden" name="teachername" th:value="${course.teachername}">
+						<input type="hidden" name="teachernumber" th:value="${course.teachernumber}">
+						<button type="submit" class="btn btn-danger">删除</button>
+					</form>
+				</td>
+				<td>
+					<form action="/updatecourse" method="post">
+						<input type="hidden" name="id" th:value="${course.id}">
+						<input type="hidden" name="coursename" th:value="${course.coursename}">
+						<input type="hidden" name="time" th:value="${course.time}">
+						<input type="hidden" name="classroom" th:value="${course.classroom}">
+						<input type="hidden" name="teacherid" th:value="${course.teacherid}">
+						<input type="hidden" name="teachername" th:value="${course.teachername}">
+						<input type="hidden" name="teachernumber" th:value="${course.teachernumber}">
+						<button type="submit" class="btn btn-primary">修改</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
 </html>
