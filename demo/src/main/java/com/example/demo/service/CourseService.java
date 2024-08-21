@@ -68,7 +68,7 @@ public class CourseService {
     }
 
     public List<Course> show_teacher_teached_course(User user) {
-        return courseMapper.selectByTeacherId(user);
+        return courseMapper.selectByTeacherId(user.getId());
     }
 
     public List<Course> show_teacher_unteached_course() {

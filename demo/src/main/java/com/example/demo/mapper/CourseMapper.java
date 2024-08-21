@@ -17,7 +17,7 @@ public interface CourseMapper {
 
     int updateByPrimaryKey(Course record);
 
-    List<Course> selectByTeacherId(User user);
+    List<Course> selectByTeacherId(Integer id);
     //selectNullCourse
     List<Course> selectNullCourse();
 }
