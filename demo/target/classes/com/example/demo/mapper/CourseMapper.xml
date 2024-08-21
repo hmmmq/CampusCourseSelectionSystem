@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="classroom" jdbcType="VARCHAR" property="classroom" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Course">
+    insert into course (id, coursename, "time", 
+      classroom, teacherid, teachername, 
+      teachernumber)
+    values (#{id,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{classroom,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachername,jdbcType=VARCHAR}, 
+      #{teachernumber,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Course">
+    update course
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      "time" = #{time,jdbcType=VARCHAR},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="classroom" jdbcType="VARCHAR" property="classroom" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Course">
+    insert into course (id, coursename, "time", 
+      classroom, teacherid, teachername, 
+      teachernumber)
+    values (#{id,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{classroom,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachername,jdbcType=VARCHAR}, 
+      #{teachernumber,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Course">
+    update course
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      "time" = #{time,jdbcType=VARCHAR},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="classroom" jdbcType="VARCHAR" property="classroom" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Course">
+    insert into course (id, coursename, "time", 
+      classroom, teacherid, teachername, 
+      teachernumber)
+    values (#{id,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{classroom,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachername,jdbcType=VARCHAR}, 
+      #{teachernumber,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Course">
+    update course
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      "time" = #{time,jdbcType=VARCHAR},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Course">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="classroom" jdbcType="VARCHAR" property="classroom" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Course">
+    insert into course (id, coursename, "time", 
+      classroom, teacherid, teachername, 
+      teachernumber)
+    values (#{id,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{classroom,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachername,jdbcType=VARCHAR}, 
+      #{teachernumber,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Course">
+    update course
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      "time" = #{time,jdbcType=VARCHAR},
+      classroom = #{classroom,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    from course
+  </select>
+</mapper>

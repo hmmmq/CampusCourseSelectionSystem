@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SSCItemMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.SSCItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="studentname" jdbcType="VARCHAR" property="studentname" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="courseid" jdbcType="INTEGER" property="courseid" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="coursetime" jdbcType="VARCHAR" property="coursetime" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="selecttime" jdbcType="VARCHAR" property="selecttime" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.SSCItem">
+    insert into "student selected course item" (id, studentid, studentnumber, 
+      studentname, teachername, courseid, 
+      coursename, coursetime, "position", 
+      selecttime, teacherid, teachernumber
+      )
+    values (#{id,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, 
+      #{studentname,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, 
+      #{coursename,jdbcType=VARCHAR}, #{coursetime,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{selecttime,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachernumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.SSCItem">
+    update "student selected course item"
+    set studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      studentname = #{studentname,jdbcType=VARCHAR},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      coursename = #{coursename,jdbcType=VARCHAR},
+      coursetime = #{coursetime,jdbcType=VARCHAR},
+      "position" = #{position,jdbcType=VARCHAR},
+      selecttime = #{selecttime,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.SSCItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="studentname" jdbcType="VARCHAR" property="studentname" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="courseid" jdbcType="INTEGER" property="courseid" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="coursetime" jdbcType="VARCHAR" property="coursetime" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="selecttime" jdbcType="VARCHAR" property="selecttime" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.SSCItem">
+    insert into "student selected course item" (id, studentid, studentnumber, 
+      studentname, teachername, courseid, 
+      coursename, coursetime, "position", 
+      selecttime, teacherid, teachernumber
+      )
+    values (#{id,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, 
+      #{studentname,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, 
+      #{coursename,jdbcType=VARCHAR}, #{coursetime,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{selecttime,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachernumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.SSCItem">
+    update "student selected course item"
+    set studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      studentname = #{studentname,jdbcType=VARCHAR},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      coursename = #{coursename,jdbcType=VARCHAR},
+      coursetime = #{coursetime,jdbcType=VARCHAR},
+      "position" = #{position,jdbcType=VARCHAR},
+      selecttime = #{selecttime,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.SSCItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="studentname" jdbcType="VARCHAR" property="studentname" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="courseid" jdbcType="INTEGER" property="courseid" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="coursetime" jdbcType="VARCHAR" property="coursetime" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="selecttime" jdbcType="VARCHAR" property="selecttime" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.SSCItem">
+    insert into "student selected course item" (id, studentid, studentnumber, 
+      studentname, teachername, courseid, 
+      coursename, coursetime, "position", 
+      selecttime, teacherid, teachernumber
+      )
+    values (#{id,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, 
+      #{studentname,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, 
+      #{coursename,jdbcType=VARCHAR}, #{coursetime,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{selecttime,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachernumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.SSCItem">
+    update "student selected course item"
+    set studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      studentname = #{studentname,jdbcType=VARCHAR},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      coursename = #{coursename,jdbcType=VARCHAR},
+      coursetime = #{coursetime,jdbcType=VARCHAR},
+      "position" = #{position,jdbcType=VARCHAR},
+      selecttime = #{selecttime,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+  </select>
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.SSCItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="studentid" jdbcType="INTEGER" property="studentid" />
+    <result column="studentnumber" jdbcType="VARCHAR" property="studentnumber" />
+    <result column="studentname" jdbcType="VARCHAR" property="studentname" />
+    <result column="teachername" jdbcType="VARCHAR" property="teachername" />
+    <result column="courseid" jdbcType="INTEGER" property="courseid" />
+    <result column="coursename" jdbcType="VARCHAR" property="coursename" />
+    <result column="coursetime" jdbcType="VARCHAR" property="coursetime" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="selecttime" jdbcType="VARCHAR" property="selecttime" />
+    <result column="teacherid" jdbcType="INTEGER" property="teacherid" />
+    <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.SSCItem">
+    insert into "student selected course item" (id, studentid, studentnumber, 
+      studentname, teachername, courseid, 
+      coursename, coursetime, "position", 
+      selecttime, teacherid, teachernumber
+      )
+    values (#{id,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER}, #{studentnumber,jdbcType=VARCHAR}, 
+      #{studentname,jdbcType=VARCHAR}, #{teachername,jdbcType=VARCHAR}, #{courseid,jdbcType=INTEGER}, 
+      #{coursename,jdbcType=VARCHAR}, #{coursetime,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{selecttime,jdbcType=VARCHAR}, #{teacherid,jdbcType=INTEGER}, #{teachernumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.SSCItem">
+    update "student selected course item"
+    set studentid = #{studentid,jdbcType=INTEGER},
+      studentnumber = #{studentnumber,jdbcType=VARCHAR},
+      studentname = #{studentname,jdbcType=VARCHAR},
+      teachername = #{teachername,jdbcType=VARCHAR},
+      courseid = #{courseid,jdbcType=INTEGER},
+      coursename = #{coursename,jdbcType=VARCHAR},
+      coursetime = #{coursetime,jdbcType=VARCHAR},
+      "position" = #{position,jdbcType=VARCHAR},
+      selecttime = #{selecttime,jdbcType=VARCHAR},
+      teacherid = #{teacherid,jdbcType=INTEGER},
+      teachernumber = #{teachernumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, studentid, studentnumber, studentname, teachername, courseid, coursename, 
+    coursetime, "position", selecttime, teacherid, teachernumber
+    from "student selected course item"
+  </select>
+</mapper>
