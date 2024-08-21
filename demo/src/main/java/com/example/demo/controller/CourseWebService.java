@@ -6,12 +6,14 @@ import com.example.demo.entity.User;
 
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
 @RequestMapping("/coursewebservice")
+@Controller
 public class CourseWebService {
 
     @Autowired
@@ -23,9 +25,11 @@ public class CourseWebService {
     @PostMapping("/student/selected_courses")
     ModelAndView student_selected_courses(User user){
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
+        List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
+        mv.addObject("courses", courses);
         mv.setViewName("student");
         return mv;
     }
@@ -34,9 +38,11 @@ public class CourseWebService {
     ModelAndView student_choose_course( Course course, User user){
         courseService.student_choose_course(course, user);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
+        List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
+        mv.addObject("courses", courses);
         mv.setViewName("student");
         return mv;
     }
@@ -47,9 +53,11 @@ public class CourseWebService {
         sscItem.setValue(course,user);
         courseService.student_cancel_course(sscItem);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
+        List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
+        mv.addObject("courses", courses);
         mv.setViewName("student");
         return mv;
 

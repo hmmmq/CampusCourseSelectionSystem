@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="course : ${courses1}">
+			<tr th:each="course : ${courses}">
 				<td th:text="${course.id}"></td>
 				<td th:text="${course.coursename}"></td>
 				<td th:text="${course.time}"></td>
@@ -68,7 +68,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="course : ${courses2}">
+			<tr th:each="course : ${nocourses}">
 				<td th:text="${course.id}"></td>
 				<td th:text="${course.coursename}"></td>
 				<td th:text="${course.time}"></td>

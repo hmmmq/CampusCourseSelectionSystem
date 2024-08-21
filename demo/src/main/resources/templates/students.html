@@ -35,7 +35,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="item : ${sscitems}">
+				<tr th:each="item : ${sscItems}">
 					<td th:text="${item.id}"></td>
 					<td th:text="${item.studentid}"></td>
 					<td th:text="${item.studentname}"></td>
@@ -49,7 +49,7 @@
 					<td th:text="${item.teachernumber}"></td>
 					<td th:text="${item.selecttime}"></td>
 					<td>
-						<form action="/delete" method="post">
+						<form action="/student/cancel_course" method="post">
 <!--							所有的item信息-->
 							<input type="hidden" name="id" th:value="${item.id}">
 							<input type="hidden" name="courseId" th:value="${item.courseid}">
@@ -78,7 +78,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="course : ${allCourses}">
+				<tr th:each="course : ${courses}">
 					<td th:text="${course.id}"></td>
 					<td th:text="${course.coursename}"></td>
 					<td th:text="${course.teacherid}"></td>
@@ -87,7 +87,7 @@
 					<td th:text="${course.time}"></td>
 					<td th:text="${course.classroom}"></td>
 					<td>
-						<form action="/select" method="post">
+						<form action="/student/choose_course" method="post">
 							<input type="hidden" name="courseid" th:value="${course.id}">
 							<input type="hidden" name="coursename" th:value="${course.name}">
 							<input type="hidden" name="position" th:value="${course.classroom}">

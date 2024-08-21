@@ -41,4 +41,14 @@
     select id, coursename, "time", classroom, teacherid, teachername, teachernumber
     from course
   </select>
+  <select id="selectByTeacherId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id, coursename, `time`, classroom, teacherid, teachername, teachernumber
+        from course
+        where teacherid = #{teacherid,jdbcType=INTEGER}
+  </select>
+  <select id="selectNullCourse" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id, coursename, `time`, classroom, teacherid, teachername, teachernumber
+        from course
+        where teacherid is null )
+    </select>
 </mapper>

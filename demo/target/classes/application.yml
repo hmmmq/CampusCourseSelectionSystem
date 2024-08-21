@@ -5,12 +5,11 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
-
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot_hw
+    url: jdbc:mysql://localhost:3306/xuanke?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: 123
 mybatis:
-  type-aliases-package: com.niit.pojo
-  mapper-locations: classpath:com/niit/mapper/*.xml
+  type-aliases-package: com.example.demo.entity  #实体类的包名
+  mapper-locations: classpath*:com/example/demo/mapper/*.xml #mapper文件的位置

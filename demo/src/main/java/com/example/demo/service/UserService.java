@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.util.IdCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,11 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    IdCalculator idCalculator;
     public boolean register(User user) {
+        int userid = IdCalculator.calculateUserId(user.getNumber(),user.getPassword());
+        user.setId(userid);
         int result = userMapper.insert(user);
         if (result == -1) {
             System.out.println("User already exists");
@@ -20,7 +25,9 @@ public class UserService {
         }
     }
     public boolean login(User user) {
-        User result = userMapper.selectByPrimaryKey(user.getId());
+        int userid = IdCalculator.calculateUserId(user.getNumber(),user.getPassword());
+        user.setId(userid);
+        User result = userMapper.selectByPrimaryKey(userid);
         if (result == null) {
             System.out.println("User not found");
             return false;}
