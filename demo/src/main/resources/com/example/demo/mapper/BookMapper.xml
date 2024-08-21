@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.entity.Book">
+    <id column="idbook" jdbcType="INTEGER" property="idbook" />
+    <result column="bookname" jdbcType="VARCHAR" property="bookname" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where idbook = #{idbook,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.entity.Book">
+    insert into book (idbook, bookname, description, 
+      amount)
+    values (#{idbook,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Book">
+    update book
+    set bookname = #{bookname,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER}
+    where idbook = #{idbook,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select idbook, bookname, description, amount
+    from book
+    where idbook = #{idbook,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select idbook, bookname, description, amount
+    from book
+  </select>
+</mapper>
