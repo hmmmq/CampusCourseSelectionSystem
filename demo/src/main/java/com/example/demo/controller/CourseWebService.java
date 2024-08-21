@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
-@RequestMapping("/coursewebservice")
+
 @Controller
 public class CourseWebService {
 
@@ -23,7 +23,22 @@ public class CourseWebService {
     //-----------------------------------student------------------------------------------------------------
 
     @PostMapping("/student/selected_courses")
-    ModelAndView student_selected_courses(User user){
+    ModelAndView student_selected_courses(@RequestParam("course.id") String courseId,
+                                          @RequestParam("course.coursename") String courseName,
+                                          @RequestParam("course.time") String courseTime,
+                                          @RequestParam("course.classroom") String courseClassroom,
+                                          @RequestParam("user.id") String userId,
+                                          @RequestParam("user.name") String userName,
+                                          @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
         List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
@@ -35,7 +50,22 @@ public class CourseWebService {
     }
 
     @PostMapping("/student/choose_course")
-    ModelAndView student_choose_course( Course course, User user){
+    ModelAndView student_choose_course( @RequestParam("course.id") String courseId,
+                                        @RequestParam("course.coursename") String courseName,
+                                        @RequestParam("course.time") String courseTime,
+                                        @RequestParam("course.classroom") String courseClassroom,
+                                        @RequestParam("user.id") String userId,
+                                        @RequestParam("user.name") String userName,
+                                        @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         courseService.student_choose_course(course, user);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
         List<Course> courses = courseService.show_course();
@@ -48,7 +78,22 @@ public class CourseWebService {
     }
 
     @PostMapping("/student/cancel_course")
-    ModelAndView student_cancel_course( Course course,  User user){
+    ModelAndView student_cancel_course( @RequestParam("course.id") String courseId,
+                                        @RequestParam("course.coursename") String courseName,
+                                        @RequestParam("course.time") String courseTime,
+                                        @RequestParam("course.classroom") String courseClassroom,
+                                        @RequestParam("user.id") String userId,
+                                        @RequestParam("user.name") String userName,
+                                        @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         SSCItem sscItem = new SSCItem();
         sscItem.setValue(course,user);
         courseService.student_cancel_course(sscItem);
@@ -66,7 +111,22 @@ public class CourseWebService {
     //-----------------------------------teacher------------------------------------------------------------
 
     @PostMapping("/teacher/teach_course")
-    ModelAndView teacher_teach_course( Course course,  User user){
+    ModelAndView teacher_teach_course(@RequestParam("course.id") String courseId,
+                                      @RequestParam("course.coursename") String courseName,
+                                      @RequestParam("course.time") String courseTime,
+                                      @RequestParam("course.classroom") String courseClassroom,
+                                      @RequestParam("user.id") String userId,
+                                      @RequestParam("user.name") String userName,
+                                      @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         courseService.teacher_teach_course(course, user);
         List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
         List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
@@ -79,7 +139,23 @@ public class CourseWebService {
     }
 
     @PostMapping("/teacher/cancel_course")
-    ModelAndView teacher_cancel_course(Course course,  User user){
+    ModelAndView teacher_cancel_course(@RequestParam("course.id") String courseId,
+                                       @RequestParam("course.coursename") String courseName,
+                                       @RequestParam("course.time") String courseTime,
+                                       @RequestParam("course.classroom") String courseClassroom,
+                                       @RequestParam("user.id") String userId,
+                                       @RequestParam("user.name") String userName,
+                                       @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
+
         courseService.teacher_cancel_course(course);
         List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
         List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
@@ -97,7 +173,24 @@ public class CourseWebService {
 
     //-----------------------------------administrator------------------------------------------------------------
     @PostMapping("/administrator/add_course")
-    ModelAndView administrator_add_course( Course course, User user){
+    ModelAndView administrator_add_course(     @RequestParam("course.id") String courseId,
+                                               @RequestParam("course.coursename") String courseName,
+                                               @RequestParam("course.time") String courseTime,
+                                               @RequestParam("course.classroom") String courseClassroom,
+                                               @RequestParam("user.id") String userId,
+                                               @RequestParam("user.name") String userName,
+                                               @RequestParam("user.number") String userNumber)
+    {
+
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         courseService.administrator_add_course(course);
         List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
@@ -110,7 +203,22 @@ public class CourseWebService {
     }
 
     @PostMapping("/administrator/delete_course")
-    ModelAndView administrator_delete_course( Course course, User user){
+    ModelAndView administrator_delete_course( @RequestParam("course.id") String courseId,
+                                              @RequestParam("course.coursename") String courseName,
+                                              @RequestParam("course.time") String courseTime,
+                                              @RequestParam("course.classroom") String courseClassroom,
+                                              @RequestParam("user.id") String userId,
+                                              @RequestParam("user.name") String userName,
+                                              @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         courseService.administrator_delete_course(course);
         List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
@@ -122,7 +230,22 @@ public class CourseWebService {
     }
 
     @PostMapping("/administrator/update_course")
-    ModelAndView administrator_update_course(Course course, User user){
+    ModelAndView administrator_update_course(@RequestParam("course.id") String courseId,
+                                             @RequestParam("course.coursename") String courseName,
+                                             @RequestParam("course.time") String courseTime,
+                                             @RequestParam("course.classroom") String courseClassroom,
+                                             @RequestParam("user.id") String userId,
+                                             @RequestParam("user.name") String userName,
+                                             @RequestParam("user.number") String userNumber){
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        User user = new User();
+        user.setId(Integer.parseInt(userId));
+        user.setName(userName);
+        user.setNumber(userNumber);
         courseService.administrator_update_course(course);
         List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();

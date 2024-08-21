@@ -5,6 +5,7 @@ import com.example.demo.entity.SSCItem;
 import com.example.demo.entity.User;
 import com.example.demo.service.CourseService;
 import com.example.demo.service.UserService;
+import com.example.demo.util.IdCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

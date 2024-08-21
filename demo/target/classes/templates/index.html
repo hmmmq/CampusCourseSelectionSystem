@@ -13,8 +13,8 @@
 	</div>
 <!--login or register-->
 	<div class="container">
-		<h1>Login</h1>
-		<form action="/login" method="post">
+		<h1>登录</h1>
+		<form th:action="@{/user/login}" method="post">
 			<div class="form-group">
 				<label for="number0">用户编号:</label>
 				<input type="text" class="form-control" id="number0" name="number">
@@ -27,8 +27,8 @@
 		</form>
 	</div>
 	<div class="container">
-		<h1>Register</h1>
-		<form action="/register" method="post">
+		<h1>注册</h1>
+		<form th:action="@{/user/register_user}" method="post">
 			<div class="form-group">
 				<label for="number">用户编号:</label>
 				<input type="text" class="form-control" id="number" name="number">
@@ -44,10 +44,10 @@
 			</div>
 			<div class="form-group">
 				<label for="role">用户角色:</label>
-				<select class="form-control" id="role" name="role">
-					<option value="0">学生</option>
-					<option value="1">老师</option>
-					<option value="2">管理员</option>
+				<select class="form-control" id="role" name="type">
+					<option   value="0">学生</option>
+					<option   value="1">老师</option>
+					<option   value="2">管理员</option>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-primary">Register</button>

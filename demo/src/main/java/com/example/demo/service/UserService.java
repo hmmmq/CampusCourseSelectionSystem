@@ -34,6 +34,7 @@ public class UserService {
         if (result.getPassword().equals(user.getPassword())) {
             System.out.println("User logged in");
             user.setType(result.getType());
+            user.setName(result.getName());
             return true;
         } else {
             System.out.println("Wrong password");

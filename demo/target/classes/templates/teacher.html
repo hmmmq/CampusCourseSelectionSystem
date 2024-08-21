@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="course : ${courses}">
+			<tr th:each="course : ${courses1}">
 				<td th:text="${course.id}"></td>
 				<td th:text="${course.coursename}"></td>
 				<td th:text="${course.time}"></td>
@@ -39,13 +39,15 @@
 				<td th:text="${course.teachername}"></td>
 				<td th:text="${course.teachernumber}"></td>
 
-
 				<td>
-					<form action="/delete" method="post">
-						<input type="hidden" name="id" th:value="${course.id}">
-						<input type="hidden" name="coursename" th:value="${course.coursename}">
-						<input type="hidden" name="time" th:value="${course.time}">
-						<input type="hidden" name="classroom" th:value="${course.classroom}">
+					<form th:action="@{/teacher/cancel_course}" method="post">
+						<input type="hidden" name="course.id" th:value="${course.id}">
+						<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+						<input type="hidden" name="course.time" th:value="${course.time}">
+						<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+						<input type="hidden" name="user.id" th:value="${user.name}">
+						<input type="hidden" name="user.name" th:value="${user.number}">
+						<input type="hidden" name="user.number" th:value="${user.id}">
 						<button type="submit" class="btn btn-danger">退出教学</button>
 					</form>
 				</td>
@@ -68,20 +70,23 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="course : ${nocourses}">
+			<tr th:each="course : ${courses2}">
 				<td th:text="${course.id}"></td>
 				<td th:text="${course.coursename}"></td>
 				<td th:text="${course.time}"></td>
 				<td th:text="${course.classroom}"></td>
 				<td>
-					<form action="/add" method="post">
-						<input type="hidden" name="id" th:value="${course.id}">
-						<input type="hidden" name="coursename" th:value="${course.coursename}">
-						<input type="hidden" name="time" th:value="${course.time}">
-						<input type="hidden" name="classroom" th:value="${course.classroom}">
-						<input type="hidden" name="teacherid" th:value="${user.id}">
-						<input type="hidden" name="teachername" th:value="${user.name}">
-						<input type="hidden" name="teachernumber" th:value="${user.number}">
+					<form th:action="@{/teacher/teach_course}" method="post">
+						<input type="hidden" name="course.id" th:value="${course.id}">
+						<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+						<input type="hidden" name="course.time" th:value="${course.time}">
+						<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+						<input type="hidden" name="course.teacherid" th:value="${user.id}">
+						<input type="hidden" name="course.teachername" th:value="${user.name}">
+						<input type="hidden" name="course.teachernumber" th:value="${user.number}">
+						<input type="hidden" name="user.id" th:value="${user.name}">
+						<input type="hidden" name="user.name" th:value="${user.number}">
+						<input type="hidden" name="user.number" th:value="${user.id}">
 						<button type="submit" class="btn btn-primary">教学</button>
 					</form>
 				</td>
