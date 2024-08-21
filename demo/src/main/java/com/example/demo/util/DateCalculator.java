@@ -9,7 +9,13 @@ public class DateCalculator {
     public String calculateDate() {
         LocalDate today = LocalDate.now();
         LocalDateTime now = LocalDateTime.now();
-        return now.toString();// 默认格式: yyyy-MM-dd
+        return now.toString();
+    }
+
+    public static void main(String[] args) {
+        DateCalculator dateCalculator = new DateCalculator();
+        String date = dateCalculator.calculateDate();
+        System.out.println("Current date and time: " + date);
     }
 
 }

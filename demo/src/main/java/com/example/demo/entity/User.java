@@ -1,20 +1,30 @@
 package com.example.demo.entity;
 
 public class User {
-    private Integer iduser;
+    private Integer id;
+
+    private String number;
 
     private String name;
 
     private String password;
 
-    private Integer admin;
+    private Integer type;
 
-    public Integer getIduser() {
-        return iduser;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIduser(Integer iduser) {
-        this.iduser = iduser;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -33,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public Integer getAdmin() {
-        return admin;
+    public Integer getType() {
+        return type;
     }
 
-    public void setAdmin(Integer admin) {
-        this.admin = admin;
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
