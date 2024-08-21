@@ -22,7 +22,7 @@ public class CourseService {
     }
 
     public List<SSCItem> student_selected_courses(User user) {
-        return sscItemMapper.selectByStudentId(user);
+        return sscItemMapper.selectByStudentId(user.getId());
     }
 
     public Boolean student_choose_course(Course course, User user) {
@@ -33,8 +33,7 @@ public class CourseService {
     }
 
     public Boolean student_cancel_course(SSCItem sscItem) {
-
-        sscItemMapper.deleteByCIdUId(sscItem);
+        sscItemMapper.deleteByPrimaryKey(sscItem.getId());
         return true;
     }
 
@@ -73,5 +72,9 @@ public class CourseService {
 
     public List<Course> show_teacher_unteached_course() {
         return courseMapper.selectNullCourse();
+    }
+
+    public List<Course> show_student_unselected_courses(Integer user_id) {
+        return courseMapper.selectStudentUnselectedCourses(user_id);
     }
 }

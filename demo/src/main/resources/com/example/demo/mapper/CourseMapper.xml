@@ -51,4 +51,9 @@
         from course
         where teacherid is null
     </select>
+  <select id="selectStudentUnselectedCourses" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id, coursename, `time`, classroom, teacherid, teachername, teachernumber
+        from course
+        where id not in (select courseid from `student selected course item` where studentid = #{studentid,jdbcType=INTEGER}) and teacherid is not null
+    </select>
 </mapper>

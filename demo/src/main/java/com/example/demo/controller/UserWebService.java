@@ -55,7 +55,7 @@ public class UserWebService {
                 mv.setViewName("teacher");
             } else if (user.getType().equals(0)) {
                 List<SSCItem> sscItems = courseService.student_selected_courses(user);
-                List<Course> courses = courseService.show_course();
+                List<Course> courses = courseService.show_student_unselected_courses(user.getId());
                 mv.addObject("sscItems", sscItems);
                 mv.addObject("user", user);
                 mv.addObject("courses", courses);

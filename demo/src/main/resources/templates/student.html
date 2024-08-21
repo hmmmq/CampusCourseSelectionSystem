@@ -19,10 +19,10 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>学生编号</th>
+					<th>条目Id</th>
+					<th>学生ID</th>
 					<th>学生姓名</th>
-					<th>学生学号</th>
+					<th>学生编号</th>
 					<th>课程编号</th>
 					<th>课程名称</th>
 					<th>课程时间</th>
@@ -51,13 +51,7 @@
 					<td>
 						<form th:action="@{/student/cancel_course}" method="post">
 <!--							所有的item信息-->
-							<input type="hidden" name="course.id" th:value="${item.id}">
-							<input type="hidden" name="course.coursename" th:value="${item.coursename}">
-							<input type="hidden" name="course.time" th:value="${item.coursetime}">
-							<input type="hidden" name="course.classroom" th:value="${item.position}">
-							<input type="hidden" name="course.teacherid" th:value="${item.teacherid}">
-							<input type="hidden" name="course.teachername" th:value="${item.teachername}">
-							<input type="hidden" name="course.teachernumber" th:value="${item.teachernumber}">
+							<input type="hidden" name="id" th:value="${item.id}">
 							<input type="hidden" name="user.name" th:value="${user.name}">
 							<input type="hidden" name="user.number" th:value="${user.number}">
 							<input type="hidden" name="user.id" th:value="${user.id}">
@@ -97,10 +91,11 @@
 						<form th:action="@{/student/choose_course}" method="post">
 							<input type="hidden" name="course.id" th:value="${course.id}">
 							<input type="hidden" name="course.coursename" th:value="${course.coursename}">
-							<input type="hidden" name="course.classroom" th:value="${course.classroom}">
 							<input type="hidden" name="course.teacherid" th:value="${course.teacherid}">
 							<input type="hidden" name="course.teachername" th:value="${course.teachername}">
 							<input type="hidden" name="course.teachernumber" th:value="${course.teachernumber}">
+							<input type="hidden" name="course.time" th:value="${course.time}">
+							<input type="hidden" name="course.classroom" th:value="${course.classroom}">
 							<input type="hidden" name="user.name" th:value="${user.name}">
 							<input type="hidden" name="user.number" th:value="${user.number}">
 							<input type="hidden" name="user.id" th:value="${user.id}">

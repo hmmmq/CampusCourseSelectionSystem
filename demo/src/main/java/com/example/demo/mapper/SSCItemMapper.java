@@ -17,7 +17,6 @@ public interface SSCItemMapper {
 
     int updateByPrimaryKey(SSCItem record);
 
-    List<SSCItem> selectByStudentId(User user);
+    List<SSCItem> selectByStudentId(Integer id);
 
-    void deleteByCIdUId(SSCItem record);
 }

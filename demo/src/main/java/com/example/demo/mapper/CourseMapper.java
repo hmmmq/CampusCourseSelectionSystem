@@ -20,4 +20,6 @@ public interface CourseMapper {
     List<Course> selectByTeacherId(Integer id);
     //selectNullCourse
     List<Course> selectNullCourse();
+
+    List<Course> selectStudentUnselectedCourses(Integer i);
 }

@@ -49,26 +49,36 @@ public class CourseWebService {
         return mv;
     }
 
+
     @PostMapping("/student/choose_course")
-    ModelAndView student_choose_course( @RequestParam("course.id") String courseId,
-                                        @RequestParam("course.coursename") String courseName,
-                                        @RequestParam("course.time") String courseTime,
-                                        @RequestParam("course.classroom") String courseClassroom,
-                                        @RequestParam("user.id") String userId,
-                                        @RequestParam("user.name") String userName,
-                                        @RequestParam("user.number") String userNumber){
+    ModelAndView student_choose_course(
+            @RequestParam("course.id") String courseId,
+            @RequestParam("course.coursename") String courseName,
+            @RequestParam("course.teacherid") String teacherId,
+            @RequestParam("course.teachername") String teacherName,
+            @RequestParam("course.teachernumber") String teacherNumber,
+            @RequestParam("course.time") String courseTime,
+            @RequestParam("course.classroom") String courseClassroom,
+            @RequestParam("user.name") String userName,
+            @RequestParam("user.number") String userNumber,
+            @RequestParam("user.id") String userId
+
+            ){
         Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
+        course.setId(Integer.valueOf(courseId));
         course.setCoursename(courseName);
         course.setTime(courseTime);
+        course.setTeacherid(Integer.valueOf(teacherId));
+        course.setTeachername(teacherName);
+        course.setTeachernumber(teacherNumber);
         course.setClassroom(courseClassroom);
         User user = new User();
-        user.setId(Integer.parseInt(userId));
+        user.setId(Integer.valueOf(userId));
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.student_choose_course(course, user);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
-        List<Course> courses = courseService.show_course();
+        List<Course> courses = courseService.show_student_unselected_courses(user.getId());
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
@@ -78,27 +88,21 @@ public class CourseWebService {
     }
 
     @PostMapping("/student/cancel_course")
-    ModelAndView student_cancel_course( @RequestParam("course.id") String courseId,
-                                        @RequestParam("course.coursename") String courseName,
-                                        @RequestParam("course.time") String courseTime,
-                                        @RequestParam("course.classroom") String courseClassroom,
+    ModelAndView student_cancel_course( @RequestParam("id") String Id,
                                         @RequestParam("user.id") String userId,
                                         @RequestParam("user.name") String userName,
                                         @RequestParam("user.number") String userNumber){
         Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
         User user = new User();
         user.setId(Integer.parseInt(userId));
         user.setName(userName);
         user.setNumber(userNumber);
         SSCItem sscItem = new SSCItem();
+        sscItem.setId(Integer.parseInt(Id));
         sscItem.setValue(course,user);
         courseService.student_cancel_course(sscItem);
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
-        List<Course> courses = courseService.show_course();
+        List<Course> courses = courseService.show_student_unselected_courses(user.getId());
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
