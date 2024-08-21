@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.example.demo.util.DateCalculator;
+
 public class SSCItem {
     private Integer id;
 
@@ -119,5 +121,19 @@ public class SSCItem {
 
     public void setTeachernumber(String teachernumber) {
         this.teachernumber = teachernumber;
+    }
+
+    public void setValue(Course course, User user) {
+        this.setCourseid(course.getId());
+        this.setCoursename(course.getCoursename());
+        this.setCoursetime(course.getTime());
+        this.setTeacherid(course.getTeacherid());
+        this.setTeachername(course.getTeachername());
+        this.setTeachernumber(course.getTeachernumber());
+        this.setStudentid(user.getId());
+        this.setStudentname(user.getName());
+        this.setStudentnumber(user.getNumber());
+        this.setPosition(course.getClassroom());
+        this.setSelecttime(DateCalculator.calculateDate());
     }
 }

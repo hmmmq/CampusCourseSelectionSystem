@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Component
 public class DateCalculator {
-    public String calculateDate() {
+    public static String calculateDate() {
         LocalDate today = LocalDate.now();
         LocalDateTime now = LocalDateTime.now();
         return now.toString();

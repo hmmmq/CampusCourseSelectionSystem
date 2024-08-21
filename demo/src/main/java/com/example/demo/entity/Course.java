@@ -70,4 +70,16 @@ public class Course {
     public void setTeachernumber(String teachernumber) {
         this.teachernumber = teachernumber;
     }
+
+    public void updateTeacher(User user) {
+        if (user == null) {
+            this.setTeacherid(null);
+            this.setTeachername(null);
+            this.setTeachernumber(null);
+            return;
+        }
+        this.setTeacherid(user.getId());
+        this.setTeachername(user.getName());
+        this.setTeachernumber(user.getNumber());
+    }
 }

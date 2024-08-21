@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.SSCItem;
+import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,4 +16,8 @@ public interface SSCItemMapper {
     List<SSCItem> selectAll();
 
     int updateByPrimaryKey(SSCItem record);
+
+    List<SSCItem> selectByStudentId(User user);
+
+    void deleteByCIdUId(SSCItem record);
 }
