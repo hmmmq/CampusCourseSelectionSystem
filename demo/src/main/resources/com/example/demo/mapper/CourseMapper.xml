@@ -15,7 +15,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.demo.entity.Course">
-    insert into course (id, coursename, "time", 
+    insert into course (id, coursename, `time`,
       classroom, teacherid, teachername, 
       teachernumber)
     values (#{id,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
@@ -25,7 +25,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.Course">
     update course
     set coursename = #{coursename,jdbcType=VARCHAR},
-      "time" = #{time,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=VARCHAR},
       classroom = #{classroom,jdbcType=VARCHAR},
       teacherid = #{teacherid,jdbcType=INTEGER},
       teachername = #{teachername,jdbcType=VARCHAR},
@@ -33,12 +33,12 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    select id, coursename, `time`, classroom, teacherid, teachername, teachernumber
     from course
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, coursename, "time", classroom, teacherid, teachername, teachernumber
+    select id, coursename, `time`, classroom, teacherid, teachername, teachernumber
     from course
   </select>
   <select id="selectByTeacherId" resultMap="BaseResultMap" parameterType="java.lang.Integer">

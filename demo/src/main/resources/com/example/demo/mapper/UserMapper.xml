@@ -13,26 +13,26 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.demo.entity.User">
-    insert into user (id, "number", "name", 
-      "password", "type")
+    insert into user (id, `number`, `name`, 
+      `password`, `type`)
     values (#{id,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.example.demo.entity.User">
     update user
-    set "number" = #{number,jdbcType=VARCHAR},
-      "name" = #{name,jdbcType=VARCHAR},
-      "password" = #{password,jdbcType=VARCHAR},
-      "type" = #{type,jdbcType=INTEGER}
+    set `number` = #{number,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, "number", "name", "password", "type"
+    select id, `number`, `name`, `password`, `type`
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, "number", "name", "password", "type"
+    select id, `number`, `name`, `password`, `type`
     from user
   </select>
 
