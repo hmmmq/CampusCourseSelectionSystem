@@ -14,6 +14,8 @@
         <result column="selecttime" jdbcType="VARCHAR" property="selecttime"/>
         <result column="teacherid" jdbcType="INTEGER" property="teacherid"/>
         <result column="teachernumber" jdbcType="VARCHAR" property="teachernumber"/>
+        <result column="grade" jdbcType="INTEGER" property="grade"/>
+
     </resultMap>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from `student selected course item`
@@ -47,25 +49,32 @@
         `position` = #{position,jdbcType=VARCHAR},
         selecttime = #{selecttime,jdbcType=VARCHAR},
         teacherid = #{teacherid,jdbcType=INTEGER},
-        teachernumber = #{teachernumber,jdbcType=VARCHAR}
+        teachernumber = #{teachernumber,jdbcType=VARCHAR},
+        grade = #{grade,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select id, studentid, studentnumber, studentname, teachername, courseid, coursename,
-        coursetime, `position`, selecttime, teacherid, teachernumber
+        coursetime, `position`, selecttime, teacherid, teachernumber,grade
         from `student selected course item`
         where id = #{id,jdbcType=INTEGER}
     </select>
     <select id="selectAll" resultMap="BaseResultMap">
         select id, studentid, studentnumber, studentname, teachername, courseid, coursename,
-        coursetime, `position`, selecttime, teacherid, teachernumber
+        coursetime, `position`, selecttime, teacherid, teachernumber,grade
         from `student selected course item`
     </select>
     <select id="selectByStudentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select id, studentid, studentnumber, studentname, teachername, courseid, coursename,
-        coursetime, `position`, selecttime, teacherid, teachernumber
+        coursetime, `position`, selecttime, teacherid, teachernumber,grade
         from `student selected course item`
         where studentid = #{studentid,jdbcType=INTEGER}
+    </select>
+    <select id="selectByStudentIdAndCourseId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select id, studentid, studentnumber, studentname, teachername, courseid, coursename,
+        coursetime, `position`, selecttime, teacherid, teachernumber,grade
+        from `student selected course item`
+        where studentid = #{studentid,jdbcType=INTEGER} and teacherid = #{teacherid,jdbcType=INTEGER}
     </select>
 
 

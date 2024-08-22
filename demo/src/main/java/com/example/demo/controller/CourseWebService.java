@@ -22,34 +22,6 @@ public class CourseWebService {
 
     //-----------------------------------student------------------------------------------------------------
 
-    @PostMapping("/student/selected_courses")
-    ModelAndView student_selected_courses(@RequestParam("course.id") String courseId,
-                                          @RequestParam("course.coursename") String courseName,
-                                          @RequestParam("course.time") String courseTime,
-                                          @RequestParam("course.classroom") String courseClassroom,
-                                          @RequestParam("user.id") String userId,
-                                          @RequestParam("user.name") String userName,
-                                          @RequestParam("user.number") String userNumber){
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
-        List<SSCItem> sscItems = courseService.student_selected_courses(user);
-        List<Course> courses = courseService.show_course();
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("sscItems", sscItems);
-        mv.addObject("user", user);
-        mv.addObject("courses", courses);
-        mv.setViewName("student");
-        return mv;
-    }
-
-
     @PostMapping("/student/choose_course")
     ModelAndView student_choose_course(
             @RequestParam("course.id") String courseId,
@@ -77,13 +49,7 @@ public class CourseWebService {
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.student_choose_course(course, user);
-        List<SSCItem> sscItems = courseService.student_selected_courses(user);
-        List<Course> courses = courseService.show_student_unselected_courses(user.getId());
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("sscItems", sscItems);
-        mv.addObject("user", user);
-        mv.addObject("courses", courses);
-        mv.setViewName("student");
+        ModelAndView mv = getStudentModelAndView(user);
         return mv;
     }
 
@@ -101,15 +67,20 @@ public class CourseWebService {
         sscItem.setId(Integer.parseInt(Id));
         sscItem.setValue(course,user);
         courseService.student_cancel_course(sscItem);
+        ModelAndView mv = getStudentModelAndView(user);
+        return mv;
+
+    }
+
+    private ModelAndView getStudentModelAndView(User user) {
+        List<Course> courses =courseService.show_student_unselected_courses(user.getId());
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
-        List<Course> courses = courseService.show_student_unselected_courses(user.getId());
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
         mv.addObject("user", user);
         mv.addObject("courses", courses);
         mv.setViewName("student");
         return mv;
-
     }
 
     //-----------------------------------teacher------------------------------------------------------------
@@ -132,13 +103,7 @@ public class CourseWebService {
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.teacher_teach_course(course, user);
-        List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
-        List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("courses1", teacher_teached_courses);
-        mv.addObject("courses2", teacher_unteached_courses);
-        mv.addObject("user", user);
-        mv.setViewName("teacher");
+        ModelAndView mv = getTeacherModelAndView(user);
         return mv;
     }
 
@@ -161,6 +126,15 @@ public class CourseWebService {
         user.setNumber(userNumber);
 
         courseService.teacher_cancel_course(course);
+        ModelAndView mv = getTeacherModelAndView(user);
+        return mv;
+    }
+    @PostMapping("/teacher/grade")
+    ModelAndView teacher_grade(){
+        ModelAndView mv = new ModelAndView();
+        return mv;
+    }
+    private ModelAndView getTeacherModelAndView(User user) {
         List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
         List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
         ModelAndView mv = new ModelAndView();
@@ -170,9 +144,6 @@ public class CourseWebService {
         mv.setViewName("teacher");
         return mv;
     }
-
-
-
 
 
     //-----------------------------------administrator------------------------------------------------------------
@@ -196,15 +167,10 @@ public class CourseWebService {
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.administrator_add_course(course);
-        List<Course> courses = courseService.show_course();
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("courses", courses);
-        mv.addObject("user", user);
-        mv.setViewName("administrator");
+        ModelAndView mv = getAdminModelAndView(user);
         return mv;
-
-
     }
+
 
     @PostMapping("/administrator/delete_course")
     ModelAndView administrator_delete_course( @RequestParam("course.id") String courseId,
@@ -224,14 +190,10 @@ public class CourseWebService {
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.administrator_delete_course(course);
-        List<Course> courses = courseService.show_course();
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("courses", courses);
-        mv.addObject("user", user);
-        mv.setViewName("administrator");
+        ModelAndView mv = getAdminModelAndView(user);
         return mv;
-
     }
+
 
     @PostMapping("/administrator/update_course")
     ModelAndView administrator_update_course(@RequestParam("course.id") String courseId,
@@ -251,6 +213,11 @@ public class CourseWebService {
         user.setName(userName);
         user.setNumber(userNumber);
         courseService.administrator_update_course(course);
+        ModelAndView mv = getAdminModelAndView(user);
+        return mv;
+    }
+
+    private ModelAndView getAdminModelAndView(User user) {
         List<Course> courses = courseService.show_course();
         ModelAndView mv = new ModelAndView();
         mv.addObject("courses", courses);
@@ -258,8 +225,4 @@ public class CourseWebService {
         mv.setViewName("administrator");
         return mv;
     }
-
-
-
-
 }
