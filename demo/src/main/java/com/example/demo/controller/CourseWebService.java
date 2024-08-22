@@ -18,7 +18,28 @@ public class CourseWebService {
 
     @Autowired
     CourseService courseService;
-
+//----------------------------------------common----------------------------------------------------------
+private static Course getCourse(String courseId, String courseName, String courseTime, String courseClassroom) {
+    Course course = new Course();
+    course.setId(Integer.parseInt(courseId));
+    course.setCoursename(courseName);
+    course.setTime(courseTime);
+    course.setClassroom(courseClassroom);
+    return course;
+}
+    private static User getUser(int userId, String userName, String userNumber) {
+        User user = new User();
+        user.setId(userId);
+        user.setName(userName);
+        user.setNumber(userNumber);
+        return user;
+    }
+    private static SSCItem getSscItem(String Id, Course course, User user) {
+        SSCItem sscItem = new SSCItem();
+        sscItem.setId(Integer.parseInt(Id));
+        sscItem.setValue(course, user);
+        return sscItem;
+    }
 
     //-----------------------------------student------------------------------------------------------------
 
@@ -44,10 +65,7 @@ public class CourseWebService {
         course.setTeachername(teacherName);
         course.setTeachernumber(teacherNumber);
         course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.valueOf(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        User user = getUser(Integer.valueOf(userId), userName, userNumber);
         courseService.student_choose_course(course, user);
         ModelAndView mv = getStudentModelAndView(user);
         return mv;
@@ -59,18 +77,15 @@ public class CourseWebService {
                                         @RequestParam("user.name") String userName,
                                         @RequestParam("user.number") String userNumber){
         Course course = new Course();
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
-        SSCItem sscItem = new SSCItem();
-        sscItem.setId(Integer.parseInt(Id));
-        sscItem.setValue(course,user);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
+        SSCItem sscItem = getSscItem(Id, course, user);
         courseService.student_cancel_course(sscItem);
         ModelAndView mv = getStudentModelAndView(user);
         return mv;
 
     }
+
+
 
     private ModelAndView getStudentModelAndView(User user) {
         List<Course> courses =courseService.show_student_unselected_courses(user.getId());
@@ -93,19 +108,14 @@ public class CourseWebService {
                                       @RequestParam("user.id") String userId,
                                       @RequestParam("user.name") String userName,
                                       @RequestParam("user.number") String userNumber){
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.teacher_teach_course(course, user);
         ModelAndView mv = getTeacherModelAndView(user);
         return mv;
     }
+
+
 
     @PostMapping("/teacher/cancel_course")
     ModelAndView teacher_cancel_course(@RequestParam("course.id") String courseId,
@@ -115,20 +125,16 @@ public class CourseWebService {
                                        @RequestParam("user.id") String userId,
                                        @RequestParam("user.name") String userName,
                                        @RequestParam("user.number") String userNumber){
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
 
         courseService.teacher_cancel_course(course);
         ModelAndView mv = getTeacherModelAndView(user);
         return mv;
     }
+
+
+
     @PostMapping("/teacher/grade")
     ModelAndView teacher_grade(){
         ModelAndView mv = new ModelAndView();
@@ -157,15 +163,8 @@ public class CourseWebService {
                                                @RequestParam("user.number") String userNumber)
     {
 
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.administrator_add_course(course);
         ModelAndView mv = getAdminModelAndView(user);
         return mv;
@@ -180,15 +179,8 @@ public class CourseWebService {
                                               @RequestParam("user.id") String userId,
                                               @RequestParam("user.name") String userName,
                                               @RequestParam("user.number") String userNumber){
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.administrator_delete_course(course);
         ModelAndView mv = getAdminModelAndView(user);
         return mv;
@@ -203,15 +195,8 @@ public class CourseWebService {
                                              @RequestParam("user.id") String userId,
                                              @RequestParam("user.name") String userName,
                                              @RequestParam("user.number") String userNumber){
-        Course course = new Course();
-        course.setId(Integer.parseInt(courseId));
-        course.setCoursename(courseName);
-        course.setTime(courseTime);
-        course.setClassroom(courseClassroom);
-        User user = new User();
-        user.setId(Integer.parseInt(userId));
-        user.setName(userName);
-        user.setNumber(userNumber);
+        Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
+        User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.administrator_update_course(course);
         ModelAndView mv = getAdminModelAndView(user);
         return mv;
