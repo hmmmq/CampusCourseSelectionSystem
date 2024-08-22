@@ -18,15 +18,17 @@ public class CourseWebService {
 
     @Autowired
     CourseService courseService;
-//----------------------------------------common----------------------------------------------------------
-private static Course getCourse(String courseId, String courseName, String courseTime, String courseClassroom) {
-    Course course = new Course();
-    course.setId(Integer.parseInt(courseId));
-    course.setCoursename(courseName);
-    course.setTime(courseTime);
-    course.setClassroom(courseClassroom);
-    return course;
-}
+
+    //----------------------------------------common----------------------------------------------------------
+    private static Course getCourse(String courseId, String courseName, String courseTime, String courseClassroom) {
+        Course course = new Course();
+        course.setId(Integer.parseInt(courseId));
+        course.setCoursename(courseName);
+        course.setTime(courseTime);
+        course.setClassroom(courseClassroom);
+        return course;
+    }
+
     private static User getUser(int userId, String userName, String userNumber) {
         User user = new User();
         user.setId(userId);
@@ -34,6 +36,7 @@ private static Course getCourse(String courseId, String courseName, String cours
         user.setNumber(userNumber);
         return user;
     }
+
     private static SSCItem getSscItem(String Id, Course course, User user) {
         SSCItem sscItem = new SSCItem();
         sscItem.setId(Integer.parseInt(Id));
@@ -56,7 +59,7 @@ private static Course getCourse(String courseId, String courseName, String cours
             @RequestParam("user.number") String userNumber,
             @RequestParam("user.id") String userId
 
-            ){
+    ) {
         Course course = new Course();
         course.setId(Integer.valueOf(courseId));
         course.setCoursename(courseName);
@@ -72,10 +75,10 @@ private static Course getCourse(String courseId, String courseName, String cours
     }
 
     @PostMapping("/student/cancel_course")
-    ModelAndView student_cancel_course( @RequestParam("id") String Id,
-                                        @RequestParam("user.id") String userId,
-                                        @RequestParam("user.name") String userName,
-                                        @RequestParam("user.number") String userNumber){
+    ModelAndView student_cancel_course(@RequestParam("id") String Id,
+                                       @RequestParam("user.id") String userId,
+                                       @RequestParam("user.name") String userName,
+                                       @RequestParam("user.number") String userNumber) {
         Course course = new Course();
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
         SSCItem sscItem = getSscItem(Id, course, user);
@@ -86,9 +89,8 @@ private static Course getCourse(String courseId, String courseName, String cours
     }
 
 
-
     private ModelAndView getStudentModelAndView(User user) {
-        List<Course> courses =courseService.show_student_unselected_courses(user.getId());
+        List<Course> courses = courseService.show_student_unselected_courses(user.getId());
         List<SSCItem> sscItems = courseService.student_selected_courses(user);
         ModelAndView mv = new ModelAndView();
         mv.addObject("sscItems", sscItems);
@@ -107,14 +109,13 @@ private static Course getCourse(String courseId, String courseName, String cours
                                       @RequestParam("course.classroom") String courseClassroom,
                                       @RequestParam("user.id") String userId,
                                       @RequestParam("user.name") String userName,
-                                      @RequestParam("user.number") String userNumber){
+                                      @RequestParam("user.number") String userNumber) {
         Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.teacher_teach_course(course, user);
         ModelAndView mv = getTeacherModelAndView(user);
         return mv;
     }
-
 
 
     @PostMapping("/teacher/cancel_course")
@@ -124,7 +125,7 @@ private static Course getCourse(String courseId, String courseName, String cours
                                        @RequestParam("course.classroom") String courseClassroom,
                                        @RequestParam("user.id") String userId,
                                        @RequestParam("user.name") String userName,
-                                       @RequestParam("user.number") String userNumber){
+                                       @RequestParam("user.number") String userNumber) {
         Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
 
@@ -134,12 +135,12 @@ private static Course getCourse(String courseId, String courseName, String cours
     }
 
 
-
     @PostMapping("/teacher/grade")
-    ModelAndView teacher_grade(){
+    ModelAndView teacher_grade() {
         ModelAndView mv = new ModelAndView();
         return mv;
     }
+
     private ModelAndView getTeacherModelAndView(User user) {
         List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
         List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
@@ -154,14 +155,13 @@ private static Course getCourse(String courseId, String courseName, String cours
 
     //-----------------------------------administrator------------------------------------------------------------
     @PostMapping("/administrator/add_course")
-    ModelAndView administrator_add_course(     @RequestParam("course.id") String courseId,
-                                               @RequestParam("course.coursename") String courseName,
-                                               @RequestParam("course.time") String courseTime,
-                                               @RequestParam("course.classroom") String courseClassroom,
-                                               @RequestParam("user.id") String userId,
-                                               @RequestParam("user.name") String userName,
-                                               @RequestParam("user.number") String userNumber)
-    {
+    ModelAndView administrator_add_course(@RequestParam("course.id") String courseId,
+                                          @RequestParam("course.coursename") String courseName,
+                                          @RequestParam("course.time") String courseTime,
+                                          @RequestParam("course.classroom") String courseClassroom,
+                                          @RequestParam("user.id") String userId,
+                                          @RequestParam("user.name") String userName,
+                                          @RequestParam("user.number") String userNumber) {
 
         Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
@@ -172,13 +172,13 @@ private static Course getCourse(String courseId, String courseName, String cours
 
 
     @PostMapping("/administrator/delete_course")
-    ModelAndView administrator_delete_course( @RequestParam("course.id") String courseId,
-                                              @RequestParam("course.coursename") String courseName,
-                                              @RequestParam("course.time") String courseTime,
-                                              @RequestParam("course.classroom") String courseClassroom,
-                                              @RequestParam("user.id") String userId,
-                                              @RequestParam("user.name") String userName,
-                                              @RequestParam("user.number") String userNumber){
+    ModelAndView administrator_delete_course(@RequestParam("course.id") String courseId,
+                                             @RequestParam("course.coursename") String courseName,
+                                             @RequestParam("course.time") String courseTime,
+                                             @RequestParam("course.classroom") String courseClassroom,
+                                             @RequestParam("user.id") String userId,
+                                             @RequestParam("user.name") String userName,
+                                             @RequestParam("user.number") String userNumber) {
         Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.administrator_delete_course(course);
@@ -194,7 +194,7 @@ private static Course getCourse(String courseId, String courseName, String cours
                                              @RequestParam("course.classroom") String courseClassroom,
                                              @RequestParam("user.id") String userId,
                                              @RequestParam("user.name") String userName,
-                                             @RequestParam("user.number") String userNumber){
+                                             @RequestParam("user.number") String userNumber) {
         Course course = getCourse(courseId, courseName, courseTime, courseClassroom);
         User user = getUser(Integer.parseInt(userId), userName, userNumber);
         courseService.administrator_update_course(course);
