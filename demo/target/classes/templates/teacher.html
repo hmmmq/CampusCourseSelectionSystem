@@ -96,10 +96,10 @@
 			<td th:text="${item.selecttime}"></td>
 			<td th:text="${item.grade}"></td>
 			<td>
-				<input type="text" name="grade" form="dafen">
+				<input type="text" name="grade" th:form="'dafen' + ${item.id}">
 			</td>
 			<td>
-				<form id="dafen" th:action="@{/teacher/grade}" method="post">
+				<form th:id="'dafen' + ${item.id}" th:action="@{/teacher/grade}" method="post">
 					<input type="hidden" name="id" th:value="${item.id}">
 					<input type="hidden"  name="studentid" th:value="${item.studentid}">
 					<input type="hidden" name="studentname" th:value="${item.studentname}">
