@@ -70,11 +70,11 @@
         from `student selected course item`
         where studentid = #{studentid,jdbcType=INTEGER}
     </select>
-    <select id="selectByStudentIdAndCourseId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectByTeacherId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select id, studentid, studentnumber, studentname, teachername, courseid, coursename,
         coursetime, `position`, selecttime, teacherid, teachernumber,grade
         from `student selected course item`
-        where studentid = #{studentid,jdbcType=INTEGER} and teacherid = #{teacherid,jdbcType=INTEGER}
+        where teacherid = #{teacherid,jdbcType=INTEGER}
     </select>
 
 

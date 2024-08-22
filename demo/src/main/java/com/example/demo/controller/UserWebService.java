@@ -49,9 +49,11 @@ public class UserWebService {
             } else if (user.getType().equals(1)) {
                 List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
                 List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
+                List<SSCItem> sscItems = courseService.selectByTeacherId(user.getId());
                 mv.addObject("courses1", teacher_teached_courses);
                 mv.addObject("courses2", teacher_unteached_courses);
                 mv.addObject("user", user);
+                mv.addObject("sscItems",sscItems);
                 mv.setViewName("teacher");
             } else if (user.getType().equals(0)) {
                 List<SSCItem> sscItems = courseService.student_selected_courses(user);

@@ -136,17 +136,22 @@ public class CourseWebService {
 
 
     @PostMapping("/teacher/grade")
-    ModelAndView teacher_grade() {
-        ModelAndView mv = new ModelAndView();
+    ModelAndView teacher_grade(
+            SSCItem sscItem) {
+        courseService.teacher_grade(sscItem);
+        User user = getUser(sscItem.getTeacherid(),sscItem.getTeachername(),sscItem.getTeachernumber());
+        ModelAndView mv = getTeacherModelAndView(user);
         return mv;
     }
 
     private ModelAndView getTeacherModelAndView(User user) {
         List<Course> teacher_teached_courses = courseService.show_teacher_teached_course(user);
         List<Course> teacher_unteached_courses = courseService.show_teacher_unteached_course();
+        List<SSCItem> sscItems = courseService.selectByTeacherId(user.getId());
         ModelAndView mv = new ModelAndView();
         mv.addObject("courses1", teacher_teached_courses);
         mv.addObject("courses2", teacher_unteached_courses);
+        mv.addObject("sscItems",sscItems);
         mv.addObject("user", user);
         mv.setViewName("teacher");
         return mv;

@@ -16,7 +16,7 @@
 			<button type="submit" class="btn btn-danger">退出登录</button>
 		</form>
 	</div>
-<!--   展示学生已经选的课程,并有“退课”的按钮(列表)-->
+<!--   展示学生已经选的课程-->
 	<div class="container">
 		<h1>已选课程</h1>
 		<table class="table table-striped">
@@ -34,7 +34,8 @@
 					<th>教师姓名</th>
 					<th>教师工号</th>
 					<th>选课时间</th>
-					<th>退出课程</th>
+					<th>课程成绩</th>
+<!--					<th>退出课程</th>-->
 				</tr>
 			</thead>
 			<tbody>
@@ -51,16 +52,17 @@
 					<td th:text="${item.teachername}"></td>
 					<td th:text="${item.teachernumber}"></td>
 					<td th:text="${item.selecttime}"></td>
-					<td>
-						<form th:action="@{/student/cancel_course}" method="post">
-<!--							所有的item信息-->
-							<input type="hidden" name="id" th:value="${item.id}">
-							<input type="hidden" name="user.name" th:value="${user.name}">
-							<input type="hidden" name="user.number" th:value="${user.number}">
-							<input type="hidden" name="user.id" th:value="${user.id}">
-							<button type="submit" class="btn btn-danger">退课</button>
-						</form>
-					</td>
+					<td th:text="${item.grade}"></td>
+<!--					<td>-->
+<!--						<form th:action="@{/student/cancel_course}" method="post">-->
+<!--&lt;!&ndash;							所有的item信息&ndash;&gt;-->
+<!--							<input type="hidden" name="id" th:value="${item.id}">-->
+<!--							<input type="hidden" name="user.name" th:value="${user.name}">-->
+<!--							<input type="hidden" name="user.number" th:value="${user.number}">-->
+<!--							<input type="hidden" name="user.id" th:value="${user.id}">-->
+<!--							<button type="submit" class="btn btn-danger">退课</button>-->
+<!--						</form>-->
+<!--					</td>-->
 				</tr>
 			</tbody>
 		</table>

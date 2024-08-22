@@ -78,8 +78,6 @@
 			<th>选课时间</th>
 			<th>课程成绩</th>
 			<th>修改成绩</th>
-
-
 		</tr>
 		</thead>
 		<tbody>
@@ -98,10 +96,22 @@
 			<td th:text="${item.selecttime}"></td>
 			<td th:text="${item.grade}"></td>
 			<td>
-				<input type="text" name="grade">
+				<input type="text" name="grade" form="dafen">
 			</td>
 			<td>
-				<form th:action="/teacher/grade">
+				<form id="dafen" th:action="@{/teacher/grade}" method="post">
+					<input type="hidden" name="id" th:value="${item.id}">
+					<input type="hidden"  name="studentid" th:value="${item.studentid}">
+					<input type="hidden" name="studentname" th:value="${item.studentname}">
+					<input type="hidden" name="studentnumber" th:value="${item.studentnumber}">
+					<input type="hidden" name="courseid" th:value="${item.courseid}">
+					<input type="hidden" name="coursename" th:value="${item.coursename}">
+					<input type="hidden" name="coursetime" th:value="${item.coursetime}">
+					<input type="hidden" name="position" th:value="${item.position}">
+					<input type="hidden" name="teacherid" th:value="${item.teacherid}">
+					<input type="hidden" name="teachername" th:value="${item.teachername}">
+					<input type="hidden"  name="teachernumber" th:value="${item.teachernumber}">
+					<input type="hidden"  name="selecttime" th:value="${item.selecttime}">
 					<button type="submit" class="btn btn-primary">打分</button>
 				</form>
 			</td>

@@ -1,0 +1,122 @@
+course-teacher+user
+<!--						<input type="hidden" name="course.id" th:value="${course.id}">-->
+<!--						<input type="hidden" name="course.coursename" th:value="${course.coursename}">-->
+<!--						<input type="hidden" name="course.time" th:value="${course.time}">-->
+<!--						<input type="hidden" name="course.classroom" th:value="${course.classroom}">-->
+<!--						<input type="hidden" name="user.name" th:value="${user.name}">-->
+<!--						<input type="hidden" name="user.number" th:value="${user.number}">-->
+<!--						<input type="hidden" name="user.id" th:value="${user.id}">-->
+<!--						<button type="submit" class="btn btn-danger">退出教学</button>-->
+
+                                       @RequestParam("course.id") String courseId,
+                                       @RequestParam("course.coursename") String courseName,
+                                       @RequestParam("course.time") String courseTime,
+                                       @RequestParam("course.classroom") String courseClassroom,
+                                       @RequestParam("user.id") String userId,
+                                       @RequestParam("user.name") String userName,
+                                       @RequestParam("user.number") String userNumber
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+course(teacher)+user(teacher)
+                        <input type="hidden" name="course.id" th:value="${course.id}">
+						<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+						<input type="hidden" name="course.time" th:value="${course.time}">
+						<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+						<input type="hidden" name="course.teacherid" th:value="${user.id}">
+						<input type="hidden" name="course.teachername" th:value="${user.name}">
+						<input type="hidden" name="course.teachernumber" th:value="${user.number}">
+						<input type="hidden" name="user.name" th:value="${user.name}">
+						<input type="hidden" name="user.number" th:value="${user.number}">
+						<input type="hidden" name="user.id" th:value="${user.id}">
+
+                                      @RequestParam("course.id") String courseId,
+                                      @RequestParam("course.coursename") String courseName,
+                                      @RequestParam("course.time") String courseTime,
+                                      @RequestParam("course.classroom") String courseClassroom,
+                                      @RequestParam("user.id") String userId,
+                                      @RequestParam("user.name") String userName,
+                                      @RequestParam("user.number") String userNumber
+
+
+--------------------------------------------------------------------------------------------------------------------
+course(teacher)+user(student)
+
+                            <input type="hidden" name="course.id" th:value="${course.id}">
+							<input type="hidden" name="course.coursename" th:value="${course.coursename}">
+							<input type="hidden" name="course.teacherid" th:value="${course.teacherid}">
+							<input type="hidden" name="course.teachername" th:value="${course.teachername}">
+							<input type="hidden" name="course.teachernumber" th:value="${course.teachernumber}">
+							<input type="hidden" name="course.time" th:value="${course.time}">
+							<input type="hidden" name="course.classroom" th:value="${course.classroom}">
+							<input type="hidden" name="user.name" th:value="${user.name}">
+							<input type="hidden" name="user.number" th:value="${user.number}">
+							<input type="hidden" name="user.id" th:value="${user.id}">
+
+							            @RequestParam("course.id") String courseId,
+                                        @RequestParam("course.coursename") String courseName,
+                                        @RequestParam("course.teacherid") String teacherId,
+                                        @RequestParam("course.teachername") String teacherName,
+                                        @RequestParam("course.teachernumber") String teacherNumber,
+                                        @RequestParam("course.time") String courseTime,
+                                        @RequestParam("course.classroom") String courseClassroom,
+                                        @RequestParam("user.name") String userName,
+                                        @RequestParam("user.number") String userNumber,
+                                        @RequestParam("user.id") String userId
+
+------------------------------------------------------------------------------------------------------------------
+					<th>条目Id</th>
+					<th>学生ID</th>
+					<th>学生姓名</th>
+					<th>学生编号</th>
+					<th>课程编号</th>
+					<th>课程名称</th>
+					<th>课程时间</th>
+					<th>上课地点</th>
+					<th>教师编号</th>
+					<th>教师姓名</th>
+					<th>教师工号</th>
+					<th>选课时间</th>
+					<th>课程成绩</th>
+				    <tr th:each="item : ${sscItems}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.studentid}"></td>
+					<td th:text="${item.studentname}"></td>
+					<td th:text="${item.studentnumber}"></td>
+					<td th:text="${item.courseid}"></td>
+					<td th:text="${item.coursename}"></td>
+					<td th:text="${item.coursetime}"></td>
+					<td th:text="${item.position}"></td>
+					<td th:text="${item.teacherid}"></td>
+					<td th:text="${item.teachername}"></td>
+					<td th:text="${item.teachernumber}"></td>
+					<td th:text="${item.selecttime}"></td>
+					<td th:text="${item.grade}"></td>
+
+					List<SSCItem> sscItems = courseService.student_selected_courses(user);
+
+                    private static SSCItem getSscItem(String Id, Course course, User user) {
+                        SSCItem sscItem = new SSCItem();
+                        sscItem.setId(Integer.parseInt(Id));
+                        sscItem.setValue(course, user);
+                        return sscItem;
+                    }
+
+                   private static Course getCourse(String courseId, String courseName, String courseTime, String courseClassroom) {
+                       Course course = new Course();
+                       course.setId(Integer.parseInt(courseId));
+                       course.setCoursename(courseName);
+                       course.setTime(courseTime);
+                       course.setClassroom(courseClassroom);
+                       return course;
+                   }
+
+                   private static User getUser(int userId, String userName, String userNumber) {
+                       User user = new User();
+                       user.setId(userId);
+                       user.setName(userName);
+                       user.setNumber(userNumber);
+                       return user;
+                   }
+-----------------------------------------------------------------------------------------------------

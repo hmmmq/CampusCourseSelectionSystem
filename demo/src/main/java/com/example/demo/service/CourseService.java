@@ -77,4 +77,13 @@ public class CourseService {
     public List<Course> show_student_unselected_courses(Integer user_id) {
         return courseMapper.selectStudentUnselectedCourses(user_id);
     }
+
+    public List<SSCItem> selectByTeacherId(Integer teacherId ){
+        return sscItemMapper.selectByTeacherId(teacherId);
+    }
+
+    public Boolean teacher_grade(SSCItem sscItem) {
+         sscItemMapper.updateByPrimaryKey(sscItem);
+         return true;
+    }
 }

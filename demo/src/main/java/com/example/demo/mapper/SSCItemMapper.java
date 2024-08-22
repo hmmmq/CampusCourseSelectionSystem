@@ -20,8 +20,5 @@ public interface SSCItemMapper {
 
     List<SSCItem> selectByStudentId(Integer id);
 
-    List<SSCItem> selectByStudentIdAndCourseId(
-            @Param("studentid") Integer studentId,
-            @Param("teacherid") Integer teacherId
-    );
+    List<SSCItem> selectByTeacherId(Integer teacherId );
 }
