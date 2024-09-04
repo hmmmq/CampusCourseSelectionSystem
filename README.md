@@ -1,4 +1,3 @@
-
 # CampusCourseSelectionSystem 使用说明
 
 ## 项目概述
@@ -37,7 +36,7 @@ http://localhost:端口/index
 
 ## 环境要求
 
-- **Java**：11
+- **Java**：17
 - **IDE**：IntelliJ IDEA 2023
 - **数据库**：MySQL
 
@@ -50,23 +49,28 @@ http://localhost:端口/index
 ## 使用指南
 
 1. **克隆项目**：
+
    ```bash
    git clone [项目的Git仓库URL]
    ```
 
 2. **导入项目**：
+
    - 在 IntelliJ IDEA 中打开项目。
 
 3. **配置数据库**：
+
    - 创建一个 MySQL 数据库，并配置 `application.properties` 文件中的数据库连接信息。
 
 4. **构建项目**：
+
    - 使用 Maven 构建项目：
      ```bash
      mvn clean install
      ```
 
 5. **运行项目**：
+
    - 在 IntelliJ IDEA 中运行 `CampusCourseSelectionSystem` 启动类，或者使用 Maven：
      ```bash
      mvn spring-boot:run
